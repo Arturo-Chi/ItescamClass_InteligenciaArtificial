@@ -14,13 +14,15 @@ class Regla:
 
 
     def evaluar(self, p:Percepcion) -> bool:
-        if not p.esValida:
-            raise ValueError("La percepción tiene datos inválidos")
+        #if not p.esValida():
+        #    raise ValueError("La percepción tiene datos inválidos")
+        p.validar()
         return bool(self.condicion(p))
 
     
 
     def ejecutar(self, p:Percepcion) -> Accion:
-        if not p.esValida:
-             raise ValueError("La percepción no es válida")
+        #if not p.esValida:
+        #     raise ValueError("La percepción no es válida")
+        p.validar()
         return self.accion(p)

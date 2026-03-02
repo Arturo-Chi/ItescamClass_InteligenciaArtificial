@@ -17,7 +17,7 @@ class Agente:
 
     def __init__(self,):
         self.motor = Motor()
-        self.motor.load_rules(daRules())
+        
 
 
     def decidir(self, p: Percepcion):

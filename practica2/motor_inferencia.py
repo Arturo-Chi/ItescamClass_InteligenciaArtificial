@@ -17,10 +17,15 @@ class Motor:
         self.reglas = rules.copy()
 
     def evaluar(self, p:Percepcion):
-        for regla in self.reglas:
-            if regla.evaluar(p):
-                regla.ejecutar(p) #Esta retornando una acción
-        
-        return Accion("MANTENER", 0, 0)
+        try:
+            p.validar()
+            for regla in self.reglas:
+                if regla.evaluar(p):
+                    return regla.ejecutar(p) #Esta retornando una acción
+            
+            return Accion("MANTENER", 0, 0)
 
+        except ValueError as e:
+            print(f"ERROR EN PERCEPCIÓN: {e}")
+            return Accion("MANTENER", 0, 0)
         
